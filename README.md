@@ -1267,7 +1267,7 @@ class ParentComponent extends React.Component {
 31. ### What are fragments?
 
     It's a common pattern or practice in React for a component to return multiple elements. _Fragments_ let you group a list of children without adding extra nodes to the DOM.
-    You need to use either **<Fragment>** or a shorter syntax having empty tag (**<></>**).
+    You need to use either `<Fragment>` or a shorter syntax having empty tag (`<></>`).
 
     Below is the example of how to use fragment inside _Story_ component.
 
@@ -1297,7 +1297,7 @@ class ParentComponent extends React.Component {
     }
     ```
 
-    Usually, you don't need to use **<Fragment>** until unless there is a need of _key_ attribute. The usage of shorter syntax looks like below.
+    Usually, you don't need to use `<Fragment>` until there is a need of _key_ attribute. The usage of shorter syntax looks like below.
 
     ```jsx harmony
     function Story({ title, description, date }) {
@@ -1974,72 +1974,73 @@ class ParentComponent extends React.Component {
 
     You can use the `useState` hook to manage the width and height state variables, and the `useEffect` hook to add and remove the `resize` event listener. The `[]` dependency array passed to useEffect ensures that the effect only runs once (on mount) and not on every re-render.
 
-          ```javascript
-          import React, { useState, useEffect } from "react";
-          function WindowDimensions() {
-            const [dimensions, setDimensions] = useState({
-              width: window.innerWidth,
-              height: window.innerHeight,
-            });
+    ```javascript
+    import React, { useState, useEffect } from "react";
+    function WindowDimensions() {
+      const [dimensions, setDimensions] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
 
-            useEffect(() => {
-              function handleResize() {
-                setDimensions({
-                  width: window.innerWidth,
-                  height: window.innerHeight,
-                });
-              }
-              window.addEventListener("resize", handleResize);
-              return () => window.removeEventListener("resize", handleResize);
-            }, []);
+      useEffect(() => {
+        function handleResize() {
+          setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
+        }
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+      }, []);
 
-            return (
-              <span>
-                {dimensions.width} x {dimensions.height}
-              </span>
-            );
-          }
-          ```
+      return (
+        <span>
+          {dimensions.width} x {dimensions.height}
+        </span>
+      );
+    }
+    ```
+
     <details>
-        <summary><h4>Using Class Component</h4></summary>
-        You can listen to the `resize` event in `componentDidMount()` and then update the dimensions (`width` and `height`). You should remove the listener in `componentWillUnmount()` method.
+    <summary><h4>Using Class Component</h4></summary>
 
+    You can listen to the `resize` event in `componentDidMount()` and then update the dimensions (`width` and `height`). You should remove the listener in `componentWillUnmount()` method.
 
-            ```javascript
-                class WindowDimensions extends React.Component {
-                  constructor(props) {
-                    super(props);
-                    this.updateDimensions = this.updateDimensions.bind(this);
-                  }
+    ```javascript
+    class WindowDimensions extends React.Component {
+      constructor(props) {
+        super(props);
+        this.updateDimensions = this.updateDimensions.bind(this);
+      }
 
-                  componentWillMount() {
-                    this.updateDimensions();
-                  }
+      componentWillMount() {
+        this.updateDimensions();
+      }
 
-                  componentDidMount() {
-                    window.addEventListener("resize", this.updateDimensions);
-                  }
+      componentDidMount() {
+        window.addEventListener("resize", this.updateDimensions);
+      }
 
-                  componentWillUnmount() {
-                    window.removeEventListener("resize", this.updateDimensions);
-                  }
+      componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions);
+      }
 
-                  updateDimensions() {
-                    this.setState({
-                      width: window.innerWidth,
-                      height: window.innerHeight,
-                    });
-                  }
+      updateDimensions() {
+        this.setState({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
 
-                  render() {
-                    return (
-                      <span>
-                        {this.state.width} x {this.state.height}
-                      </span>
-                    );
-                  }
-                }
-                ```
+      render() {
+        return (
+          <span>
+            {this.state.width} x {this.state.height}
+          </span>
+        );
+      }
+    }
+    ```
 
     </details>
 
@@ -2220,7 +2221,7 @@ class ParentComponent extends React.Component {
 
 **[⬆ Back to Top](#table-of-contents)**
 
-73. #### What are the exceptions on React component naming?
+73. ### What are the exceptions on React component naming?
 
     The component names should start with an uppercase letter but there are few exceptions to this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
     For example, the below tag can be compiled to a valid component,
@@ -4820,7 +4821,7 @@ class ParentComponent extends React.Component {
 **[⬆ Back to Top](#table-of-contents)**
 
 227. ### What is MobX?
-     MobX is a simple, scalable and battle tested state management solution for applying functional reactive programming (TFRP). For reactJs application, you need to install below packages,
+     MobX is a simple, scalable and battle tested state management solution for applying functional reactive programming (TFRP). For ReactJS application, you need to install below packages,
      ```bash
      npm install mobx --save
      npm install mobx-react --save
@@ -4960,9 +4961,9 @@ class ParentComponent extends React.Component {
 
 **[⬆ Back to Top](#table-of-contents)**
 
-235. ### What are the benefits of using typescript with reactjs?
+235. ### What are the benefits of using TypeScript with ReactJS?
 
-     Below are some of the benefits of using typescript with Reactjs,
+     Below are some of the benefits of using TypeScript with ReactJS,
 
      1. It is possible to use latest JavaScript features
      2. Use of interfaces for complex type definitions
@@ -5197,12 +5198,12 @@ class ParentComponent extends React.Component {
 
      ## 1. Syntax:
 
-     The classs components uses ES6 classes to create the components. It uses `render` function to display the HTML content in the webpage.
+     The class components uses ES6 classes to create the components. It uses `render` function to display the HTML content in the webpage.
 
      The syntax for class component looks like as below.
 
      ```js
-     class App extends Reacts.Component {
+     class App extends React.Component {
        render() {
          return <h1>This is a class component</h1>;
        }
@@ -5227,8 +5228,9 @@ class ParentComponent extends React.Component {
 
      State contains information or data about a component which may change over time.
 
-     In class component, you can update the state when a user interacts with it or server updates the data using the `setState()` method. The initial state is going to be assigned in the `Constructor( ) `method using the the ` this.state` object and it is possible to different data types in the `this.state` object such as string, boolean, numbers, etc.
-     **A simple example showing how we use the setState() and constructor()**
+     In class component, you can update the state when a user interacts with it or server updates the data using the `setState()` method. The initial state is going to be assigned in the `Constructor()` method using the `this.state` object and it is possible to assign different data types such as string, boolean, numbers, etc.
+
+     **A simple example showing how we use the setState() and constructor():**
 
      ```js
      class App extends Component {
@@ -5239,7 +5241,7 @@ class ParentComponent extends React.Component {
          };
        }
        updateMessage() {
-         this.setState({t
+         this.setState({
            message: "Updating the class component",
          });
        }
@@ -5260,9 +5262,9 @@ class ParentComponent extends React.Component {
 
      ```
 
-     You not use state in functional components because it was only supported in class components. But over the years hooks have been implemented in functional component which enable to use state in functional component too.
+     You didn't use state in functional components because it was only supported in class components. But over the years hooks have been implemented in functional components which enables to use state too.
 
-     The `useState()` hook can used to implement state in funcitonal component. It returns an array with two items: the first item is current state and the next one is a function (setState) that updates the value of the current state.
+     The `useState()` hook can used to implement state in functional components. It returns an array with two items: the first item is current state and the next one is a function (setState) that updates the value of the current state.
 
      Let's see an example to demonstrate the state in functional components,
 
@@ -5283,7 +5285,7 @@ class ParentComponent extends React.Component {
 
      ## 3. Props:
 
-     Props are referred to as "properties". The props are passed into react component just like arguments passed to a function. In otherwords, they are similar to HTML attributes.
+     Props are referred to as "properties". The props are passed into React component just like arguments passed to a function. In other words, they are similar to HTML attributes.
 
      The props are accessible in child class component using `this.props` as shown in below example,
 
@@ -7108,7 +7110,7 @@ Technically it is possible to write nested function components but it is not sug
          npx create-react-app my-app --template typescript
          ```
 
-        But if you are using React Scripting between react-scripts@2.1.0 and react-scripts@3.2.x , there is a built-in support for typescript. i.e, `create-react-app` now supports typescript natively. You can just pass `--typescript` option as below
+        But if you are using React Scripting between react-scripts@2.1.0 and react-scripts@3.2.x , there is a built-in support for TypeScript. i.e, `create-react-app` now supports TypeScript natively. You can just pass `--typescript` option as below
 
          ```bash
          npx create-react-app my-app --typescript
